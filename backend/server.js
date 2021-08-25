@@ -6,6 +6,10 @@ const {PORT, host} = require('./config.js')
 const { users } = require('./database/users.js')
 //O'zimiz yasagan express classni import qilib olish
 const Express = require('./lib/express')
+//user ichidagi index.jsdan get degan functionni import qilish
+const userController = require('./modules/user/index')
+//twit ichidagi index.jsdan get degan functionni import qilish
+const twitController = require('./modules/twit/index')
 
 
 //serverni yaratish
@@ -13,16 +17,8 @@ const server = http.createServer((req, res) => {
     //Expressdan extense olish
     const app = new Express(req, res)
     //appning get methodiga qiymat berish
-    app.get('/users', (req, res) => {
-        res.writeHead(200, { 'Content-Type': 'application/json' })
-        //clientga users api ni yuborish
-        return res.end(JSON.stringify(users, null, 4))
-    })
-    app.get('/posts', (req, res) => {
-        res.writeHead(200, { 'Content-Type': 'application/json' })
-        //clientga users api ni yuborish
-        return res.end(JSON.stringify({x: 'salom'}))
-    })
+    app.get('/users', userController.GET)
+    app.get('/twit', twitController.GET)
 })
 //serverni ishga tushirish
 server.listen(PORT, ()=> console.log(`Server is running on http://${host}:${PORT}`))
