@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
     const app = new Express(req, res)
     //appning get methodiga qiymat berish
     app.get('/users', userController.GET)
-    app.get('/twit', twitController.GET)
+    app.get('/posts', twitController.GET)
 })
 //serverni ishga tushirish
 server.listen(PORT, ()=> console.log(`Server is running on http://${host}:${PORT}`))
