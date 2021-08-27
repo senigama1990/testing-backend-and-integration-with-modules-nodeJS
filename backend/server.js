@@ -18,6 +18,7 @@ const server = http.createServer((req, res) => {
     const app = new Express(req, res)
     //appning get methodiga qiymat berish
     app.get('/users', userController.GET)
+    app.post('/users', userController.POST)
     app.get('/posts', twitController.GET)
 })
 //serverni ishga tushirish
