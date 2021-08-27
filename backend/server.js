@@ -13,6 +13,8 @@ const imageController = require('./modules/image/index')
 const server = http.createServer((req, res) => {
     //Expressdan extense olish
     const app = new Express(req, res)
+    //backendga response kelishiga ruxsat berish
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
     //appning get methodiga qiymat berish
     app.get('/users', userController.GET)
     app.post('/users', userController.POST)
