@@ -22,6 +22,7 @@ module.exports = class Express {
         if (this.req.url !== '/' && this.req.method === 'GET') {
             let filePath = this.req.url
             let reqMimetype = path.extname(filePath)
+            if(!reqMimetype) return
             let mimeTypes = {
                 '.jpg': 'image/jpg'
             }

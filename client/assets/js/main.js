@@ -1,14 +1,14 @@
 async function getUsers () {
     let response = await fetch('http://localhost:4500/users')
     let users = await response.json()
-
+    list.innerHTML = null
     users.map((user) => {
         let li = document.createElement('li')
         li.textContent = user.username
         list.append(li)
     })
 }
-// getUsers()
+getUsers()
 
 form.onsubmit = async function (e) {
     e.preventDefault()
